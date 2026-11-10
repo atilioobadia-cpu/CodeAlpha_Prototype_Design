@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Prototype - Online Learning Platform</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--brand:#4F46E5;--brand-dark:#3730A3;--brand-soft:#EEF2FF;--bg:#F5F7FB;--card:#fff;--text:#1F2937;--muted:#6B7280;--border:#E5E7EB;--success:#10B981;--radius:16px;--shadow:0 8px 24px rgba(0,0,0,.06);}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;background:#eef0f4;display:flex;justify-content:center;padding:24px;}
+.phone{width:390px;height:844px;background:var(--bg);border-radius:36px;overflow:hidden;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.2);}
+.status{height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;font-size:13px;font-weight:600;color:var(--text);}
+.screen{position:absolute;top:44px;left:0;right:0;bottom:80px;padding:16px 20px;overflow-y:auto;display:none;}
+.screen.active{display:block;}
+.nav{position:absolute;bottom:0;left:0;right:0;height:80px;background:#fff;border-top:1px solid var(--border);display:flex;justify-content:space-around;align-items:center;padding-bottom:16px;}
+.navitem{text-align:center;font-size:11px;color:var(--muted);font-weight:500;cursor:pointer;}
+.navitem.active{color:var(--brand);}
+.navitem .ico{font-size:22px;display:block;margin-bottom:2px;}
+.h1{font-size:22px;font-weight:800;color:var(--text);margin:4px 0 12px;}
+.card{background:var(--card);border-radius:var(--radius);padding:14px;box-shadow:var(--shadow);border:1px solid var(--border);margin-bottom:12px;}
+.course{display:flex;gap:12px;align-items:center;}
+.thumb{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,#C7D2FE,#A5B4FC);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;}
+.course-info{flex:1;}
+.course-title{font-size:14px;font-weight:700;color:var(--text);margin:0 0 2px;}
+.course-meta{font-size:12px;color:var(--muted);}
+.progress{height:6px;background:#E5E7EB;border-radius:3px;margin-top:6px;overflow:hidden;}
+.progress>div{height:100%;background:var(--brand);border-radius:3px;}
+.btn{background:var(--brand);color:#fff;border:none;border-radius:12px;padding:12px 16px;font-size:14px;font-weight:600;cursor:pointer;width:100%;margin-top:8px;}
+.btn.outline{background:#fff;color:var(--brand);border:1.5px solid var(--brand);}
+.chip{display:inline-block;background:var(--brand-soft);color:var(--brand);font-size:11px;font-weight:600;padding:3px 8px;border-radius:8px;margin:2px;}
+.lesson{display:flex;gap:10px;padding:10px;background:var(--card);border-radius:12px;border:1px solid var(--border);margin-bottom:8px;cursor:pointer;}
+.lesson .ico{width:36px;height:36px;border-radius:10px;background:var(--brand-soft);display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--brand);flex-shrink:0;}
+.lesson.done .ico{background:#D1FAE5;color:var(--success);}
+.quizopt{background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:12px;margin:8px 0;cursor:pointer;font-size:14px;}
+.quizopt.correct{background:#D1FAE5;border-color:var(--success);color:#065F46;}
+.quizopt.wrong{background:#FEE2E2;border-color:#EF4444;color:#991B1B;}
+.input{background:#fff;border:1px solid var(--border);border-radius:12px;padding:12px 14px;margin-bottom:10px;font-size:14px;color:var(--muted);}
+.avatar{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#C7D2FE,#A5B4FC);margin:0 auto 8px;display:flex;align-items:center;justify-content:center;font-size:30px;}
+.stat{background:var(--card);border-radius:12px;padding:12px;text-align:center;border:1px solid var(--border);}
+.stat .num{font-size:20px;font-weight:800;color:var(--brand);}
+.stat .lbl{font-size:11px;color:var(--muted);}
+</style>
+</head>
+<body>
+<div class="phone">
+  <div class="status"><span>9:41</span><span>●●●  WiFi  🔋</span></div>
+
+  <!-- Home -->
+  <div class="screen active" id="home">
+    <h1 class="h1">LearnHub</h1>
+    <div class="input">🔍  Search courses...</div>
+    <div style="display:flex;gap:8px;margin:8px 0 16px;">
+      <div class="chip">All</div><div class="chip">Design</div><div class="chip">Code</div><div class="chip">Business</div>
+    </div>
+    <div class="section-title" style="font-weight:700;font-size:15px;margin:8px 0;">Continue Learning</div>
+    <div class="card course" onclick="go('course')">
+      <div class="thumb">🎨</div>
+      <div class="course-info"><p class="course-title">UI/UX Design Fundamentals</p><p class="course-meta">12 lessons · 4h 30m</p><div class="progress"><div style="width:60%;"></div></div></div>
+    </div>
+    <div class="section-title" style="font-weight:700;font-size:15px;margin:12px 0 8px;">Recommended</div>
+    <div class="card course" onclick="go('course')">
+      <div class="thumb" style="background:linear-gradient(135deg,#FDE68A,#FCD34D);">💻</div>
+      <div class="course-info"><p class="course-title">JavaScript for Beginners</p><p class="course-meta">20 lessons · 8h 10m</p><div class="progress"><div style="width:0%;"></div></div></div>
+    </div>
+    <div class="card course" onclick="go('course')">
+      <div class="thumb" style="background:linear-gradient(135deg,#A7F3D0,#6EE7B7);">📊</div>
+      <div class="course-info"><p class="course-title">Data Analytics with Python</p><p class="course-meta">15 lessons · 6h 00m</p><div class="progress"><div style="width:20%;"></div></div></div>
+    </div>
+  </div>
+
+  <!-- Course -->
+  <div class="screen" id="course">
+    <div class="h1" style="font-size:18px;">UI/UX Design Fundamentals</div>
+    <div class="card" style="text-align:center;padding:20px;">
+      <div style="font-size:48px;">🎨</div>
+      <p style="font-weight:700;margin:8px 0 2px;">UI/UX Design Fundamentals</p>
+      <p class="course-meta">By Sarah Chen · 12 lessons · 4.8 ⭐</p>
+      <button class="btn" onclick="go('lesson')">Continue (Lesson 7)</button>
+    </div>
+    <div style="font-weight:700;font-size:15px;margin:12px 0 8px;">Lessons</div>
+    <div class="lesson done" onclick="go('lesson')"><div class="ico">✓</div><div><div style="font-weight:600;font-size:13px;">1. Intro to UX</div><div class="course-meta">12 min</div></div></div>
+    <div class="lesson done" onclick="go('lesson')"><div class="ico">✓</div><div><div style="font-weight:600;font-size:13px;">2. Wireframing</div><div class="course-meta">18 min</div></div></div>
+    <div class="lesson" onclick="go('lesson')"><div class="ico">▶</div><div><div style="font-weight:600;font-size:13px;">3. Color & Typography</div><div class="course-meta">15 min</div></div></div>
+    <div class="lesson" onclick="go('lesson')"><div class="ico">▶</div><div><div style="font-weight:600;font-size:13px;">4. Prototyping</div><div class="course-meta">20 min</div></div></div>
+  </div>
+
+  <!-- Lesson -->
+  <div class="screen" id="lesson">
+    <div class="h1" style="font-size:18px;">Lesson 3: Color & Typography</div>
+    <div class="card" style="height:180px;background:linear-gradient(135deg,#C7D2FE,#A5B4FC);display:flex;align-items:center;justify-content:center;font-size:60px;">🎨</div>
+    <p style="margin:12px 0;font-size:14px;color:var(--muted);">Learn how to choose color palettes and typography that enhance readability and brand identity.</p>
+    <div style="font-weight:700;font-size:14px;margin:12px 0 6px;">Quick Quiz</div>
+    <div class="quizopt" onclick="answer(this,true)">A. Contrast improves readability</div>
+    <div class="quizopt" onclick="answer(this,false)">B. Use 10+ fonts per screen</div>
+    <div class="quizopt" onclick="answer(this,false)">C. Ignore color blindness</div>
+    <button class="btn" style="margin-top:12px;" onclick="go('home')">Back to Home</button>
+  </div>
+
+  <!-- Profile -->
+  <div class="screen" id="profile">
+    <div style="text-align:center;margin:12px 0;">
+      <div class="avatar">👤</div>
+      <div style="font-weight:700;font-size:16px;">Alex Johnson</div>
+      <div class="course-meta">alex@email.com</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:12px 0;">
+      <div class="stat"><div class="num">3</div><div class="lbl">Courses</div></div>
+      <div class="stat"><div class="num">42</div><div class="lbl">Lessons</div></div>
+      <div class="stat"><div class="num">12h</div><div class="lbl">Learned</div></div>
+    </div>
+    <div class="card"><div style="font-weight:600;font-size:14px;margin-bottom:6px;">Achievements</div><div class="chip">🏆 First Course</div><div class="chip">🔥 7-day streak</div><div class="chip">📚 40 lessons</div></div>
+    <button class="btn outline" onclick="go('home')">Back to Home</button>
+  </div>
+
+  <div class="nav">
+    <div class="navitem active" onclick="go('home')"><span class="ico">🏠</span>Home</div>
+    <div class="navitem" onclick="go('course')"><span class="ico">📚</span>Courses</div>
+    <div class="navitem" onclick="go('lesson')"><span class="ico">▶️</span>Lesson</div>
+    <div class="navitem" onclick="go('profile')"><span class="ico">👤</span>Profile</div>
+  </div>
+</div>
+
+<script>
+function go(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.navitem').forEach(n=>n.classList.remove('active'));
+}
+function answer(el, correct){
+  document.querySelectorAll('.quizopt').forEach(o=>{o.classList.remove('correct','wrong');});
+  if(correct) el.classList.add('correct'); else el.classList.add('wrong');
+}
+</script>
+</body>
+</html>

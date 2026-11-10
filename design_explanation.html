@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Prototype Design Explanation</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 20mm; }
+  body { font-family:'Inter',sans-serif; color:#1F2937; line-height:1.6; max-width:800px; margin:0 auto; padding:20px; }
+  h1 { font-size:26px; font-weight:800; color:#4F46E5; margin:0 0 4px; }
+  h2 { font-size:18px; font-weight:700; margin:18px 0 6px; border-bottom:2px solid #4F46E5; padding-bottom:4px; }
+  p { margin:8px 0; }
+  ul { margin:8px 0 8px 20px; }
+  .meta { color:#6B7280; font-size:13px; margin-bottom:16px; }
+  .box { background:#F5F7FB; border:1px solid #E5E7EB; border-radius:10px; padding:12px; margin:10px 0; }
+  .pagebreak { page-break-after: always; }
+</style>
+</head>
+<body>
+<h1>Mini Project — Prototype Design: LearnHub</h1>
+<p class="meta">CodeAlpha Internship — Month 1 · Task 4 (UI/UX Design) · Online Learning Platform</p>
+
+<h2>1. Concept</h2>
+<p>LearnHub is a mobile-first online learning platform. The clickable prototype demonstrates the core learning loop: discover courses → open course → watch lesson → take quiz → track progress → view profile.</p>
+
+<h2>2. Screens</h2>
+<ul>
+  <li><b>Home:</b> search, category chips, "Continue Learning" card with progress, recommended courses.</li>
+  <li><b>Course Detail:</b> course info, progress, lesson list with done/in-progress states.</li>
+  <li><b>Lesson Player:</b> video placeholder, description, quick quiz with answer feedback.</li>
+  <li><b>Profile:</b> avatar, stats (courses/lessons/hours), achievements.</li>
+</ul>
+
+<h2>3. Design Decisions</h2>
+<ul>
+  <li><b>Color:</b> Indigo (#4F46E5) as primary — conveys trust and focus; soft indigo surfaces for chips.</li>
+  <li><b>Typography:</b> Inter for clean, modern readability across sizes.</li>
+  <li><b>Navigation:</b> Bottom nav with 4 tabs (Home, Courses, Lesson, Profile) for thumb reach.</li>
+  <li><b>Feedback:</b> Progress bars, done checkmarks, quiz correct/wrong coloring.</li>
+  <li><b>Accessibility:</b> 44px+ tap targets, clear contrast, focusable controls.</li>
+</ul>
+
+<div class="pagebreak"></div>
+
+<h2>4. Interactions</h2>
+<ul>
+  <li>Tapping a course card opens Course Detail.</li>
+  <li>"Continue" opens the Lesson Player at the next lesson.</li>
+  <li>Quiz options highlight green (correct) / red (wrong) on tap.</li>
+  <li>Bottom nav switches between Home, Courses, Lesson, Profile.</li>
+  <li>"Back to Home" returns to Home from Lesson.</li>
+</ul>
+
+<h2>5. Tools & Tech</h2>
+<p>Designed as an interactive HTML/CSS/JS prototype (mirroring a Figma prototype). Screens exported as PNG for submission. Can be opened in any browser; no build step required.</p>
+
+<h2>6. Submission</h2>
+<p>Upload the prototype folder to Google Drive as <code>CodeAlpha_Prototype_Design</code>, share the clickable link, post a video explanation on LinkedIn, and submit via the CodeAlpha form.</p>
+<p class="meta">— End of explanation —</p>
+</body>
+</html>
